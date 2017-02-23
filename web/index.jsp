@@ -13,8 +13,7 @@
         <title>Login</title>
     </head>
     <hgroup>
-        <h1>Material Design Form</h1>
-        <h3>By Josh Adamous</h3>
+        <h1>Login</h1>
     </hgroup>
     <form>
         <div class="group">
@@ -30,6 +29,7 @@
         </button>
     </form>
     <footer><a href="http://www.polymer-project.org/" target="_blank"><img src="https://www.polymer-project.org/images/logos/p-logo.svg"></a>
-        <p>You Gotta Love <a href="http://www.polymer-project.org/" target="_blank">Google</a></p>
+        <p>New User <a href="http://www.polymer-project.org/" target="_blank">Signup here</a></p>
+        <p>Powered By <a href="http://www.polymer-project.org/" target="_blank">Java EE</a></p>
     </footer>
 </html>
