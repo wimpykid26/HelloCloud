@@ -21,7 +21,7 @@
             <label>Name</label>
         </div>
         <div class="group">
-            <input type="email"><span class="highlight"></span><span class="bar"></span>
+            <input type="text"><span class="highlight"></span><span class="bar"></span>
             <label>Password</label>
         </div>
         <button type="button" class="button buttonBlue">Subscribe
