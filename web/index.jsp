@@ -22,14 +22,10 @@
         </div>
         <div class="group">
             <input type="email"><span class="highlight"></span><span class="bar"></span>
-            <label>Email</label>
+            <label>Password</label>
         </div>
         <button type="button" class="button buttonBlue">Subscribe
             <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
         </button>
     </form>
-    <footer><a href="http://www.polymer-project.org/" target="_blank"><img src="https://www.polymer-project.org/images/logos/p-logo.svg"></a>
-        <p>New User <a href="http://www.polymer-project.org/" target="_blank">Signup here</a></p>
-        <p>Powered By <a href="http://www.polymer-project.org/" target="_blank">Java EE</a></p>
-    </footer>
 </html>
