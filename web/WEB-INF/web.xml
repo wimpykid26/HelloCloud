@@ -22,7 +22,7 @@
             <include-coda>/WEB-INF/jspf/footer.jspf</include-coda>
         </jsp-property-group>
     </jsp-config>
-    <resource-ref>
+    <!--<resource-ref>
         <description>Connects to database named quora</description>
         <res-ref-name>jdbc/quora</res-ref-name>
         <res-type>javax.sql.ConnectionPoolDataSource</res-type>
@@ -35,5 +35,5 @@
         <res-type>javax.sql.ConnectionPoolDataSource</res-type>
         <res-auth>Container</res-auth>
         <res-sharing-scope>Shareable</res-sharing-scope>
-    </resource-ref>
+    </resource-ref>-->
 </web-app>

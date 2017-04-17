@@ -7,17 +7,27 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import session.QuestionsFacade;
 
 /**
  *
  * @author mera_naam_dwaipayan
  */
 public class ControllerServlet extends HttpServlet {
+    @EJB
+    private QuestionsFacade questionsFacade; 
+    
+    @Override
+    public void init() throws ServletException {
 
+        // store category list in servlet context
+        getServletContext().setAttribute("questions", questionsFacade.findAll());
+    }
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.

@@ -54,15 +54,16 @@
     </style>
   </head>
   <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
-    <sql:query var="results" dataSource="jdbc/homeBean">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <%--<sql:query var="results" dataSource="jdbc/homeBean">
         SELECT * FROM questions
-    </sql:query>
+    </sql:query>--%>
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
         <div class="mdl-layout--large-screen-only mdl-layout__header-row">
         </div>
         <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-          <h3>Name &amp; Title</h3>
+          <h3>Discussion Forum</h3>
         </div>
         <div class="mdl-layout--large-screen-only mdl-layout__header-row">
         </div>
@@ -80,7 +81,7 @@
       </header>
       
       <main class="mdl-layout__content">
-       <c:forEach var="result" items="${results.rows}"> 
+       <c:forEach var="result" items="${questions}"> 
         <div class="mdl-layout__tab-panel is-active" id="overview">
           <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
             <header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white">
@@ -88,9 +89,9 @@
             </header>
             <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
               <div class="mdl-card__supporting-text">
-                <h4>${result.Username}</h4>
-                <h5>${result.Type}</h5>
-                ${result.Content}
+                <h4>${result.username}</h4>
+                <h5>${result.type}</h5>
+                ${result.content}
               </div>
               <div class="mdl-card__actions">
                 <a href="#" class="mdl-button">Read our features</a>
@@ -109,7 +110,6 @@
        </c:forEach>
       </main>
     </div>
-    <a href="https://github.com/google/material-design-lite/blob/mdl-1.x/templates/text-only/" target="_blank" id="view-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">View Source</a>
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
   </body>
 </html>
