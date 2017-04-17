@@ -8,7 +8,6 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,7 +16,6 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author mera_naam_dwaipayan
  */
-@WebServlet(name = "ControllerServlet", loadOnStartup = 1, urlPatterns = {"/home", "/logout", "/profile"})
 public class ControllerServlet extends HttpServlet {
 
     /**
@@ -58,22 +56,23 @@ public class ControllerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         String userPath = request.getServletPath();
+        String userPath = request.getServletPath();
 
         // if category page is requested
         if (userPath.equals("/home")) {
             // TODO: Implement category request
+            userPath = "/home";
 
         // if cart page is requested
-        } else if (userPath.equals("/logout")) {
+        } else if (userPath.equals("/question")) {
             // TODO: Implement cart page request
 
-            userPath = "/cart";
+            userPath = "/question";
 
         // if checkout page is requested
         } else if (userPath.equals("/profile")) {
             // TODO: Implement checkout page request
-
+            userPath = "/profile";
         // if user switches language
         }
         // use RequestDispatcher to forward request internally
@@ -84,6 +83,7 @@ public class ControllerServlet extends HttpServlet {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        
     }
 
     /**
