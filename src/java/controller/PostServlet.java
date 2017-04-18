@@ -20,20 +20,12 @@ import session.UsersFacade;
  *
  * @author mera_naam_dwaipayan
  */
-@WebServlet("/ControllerServlet")
-public class ControllerServlet extends HttpServlet {
-    
-    @EJB
-    private QuestionsFacade questionsFacade; 
-    @EJB
-    private UsersFacade usersFacade;
-    @Override
-    public void init() throws ServletException {
+@WebServlet("/PostServlet")
+public class PostServlet extends HttpServlet {
+     @EJB
+    private QuestionsFacade questionsFacade;
 
-        // store category list in serv1let context
-        getServletContext().setAttribute("questions", questionsFacade.findAll());
-        //getServletContext().setAttribute("users", questionsFacade.findByName());
-    }
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -51,10 +43,10 @@ public class ControllerServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ControllerServlet</title>");            
+            out.println("<title>Servlet PostServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ControllerServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet PostServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -72,43 +64,7 @@ public class ControllerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String userPath = request.getServletPath();
-
-        // if category page is requested
-        if (userPath.equals("/home")) {
-            // TODO: Implement category request
-            userPath = "/home";
-
-        // if cart page is requested
-        }
-        else if (userPath.equals("/question")) {
-            // TODO: Implement cart page request
-
-            userPath = "/question";
-
-        // if checkout page is requested
-        }
-       
-        else if (userPath.equals("/profile")) {
-            // TODO: Implement checkout page request
-            userPath = "/profile";
-        // if user switches language
-        }
-        else if (userPath.equals("/login")) {
-            // TODO: Implement checkout page request
-            userPath = "/login";
-        // if user switches language
-        }
-        
-        // use RequestDispatcher to forward request internally
-        String url = "/WEB-INF/view" + userPath + ".jsp";
-
-        try {
-            request.getRequestDispatcher(url).forward(request, response);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        
+        processRequest(request, response);
     }
 
     /**
@@ -122,17 +78,13 @@ public class ControllerServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
         String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        usersFacade.setParameters(username, password);
-        response.sendRedirect("");
-          
-       }
-       
+        String category = request.getParameter("category");
+        String content = request.getParameter("content");
         
-    
-
+        questionsFacade.setParameters(username,content,category);
+        response.sendRedirect("");
+    }
 
     /**
      * Returns a short description of the servlet.

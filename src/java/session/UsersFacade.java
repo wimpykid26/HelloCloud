@@ -6,6 +6,7 @@
 package session;
 
 import entity.Users;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -29,4 +30,19 @@ public class UsersFacade extends AbstractFacade<Users> {
         super(Users.class);
     }
     
+    public void setParameters(String username, String password){
+        Users user = new Users();
+        user.setName(username);
+        user.setSubscriptions(password);
+        em.persist(user);
+    }
+    public int getParameters(String username, String password){
+        
+        List<Users> var = em.createNamedQuery(username).getResultList();
+        if(var.isEmpty() == true){
+            return 0;
+        }
+        else return 1;
+    }
+   
 }

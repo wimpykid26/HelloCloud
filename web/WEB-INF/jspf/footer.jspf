@@ -1,6 +1,6 @@
 <%-- any content can be specified here e.g.: --%>
 <%@ page pageEncoding="UTF-8" %>
 <footer><a href="http://www.polymer-project.org/" target="_blank"><img src="https://www.polymer-project.org/images/logos/p-logo.svg"></a>
-        <p>New User <a href="http://www.polymer-project.org/" target="_blank">Signup here</a></p>
+        <p>New User <a href="http://localhost:8080/HelloCloud/login" target="_blank">Signup here</a></p>
         <p>Powered By <a href="http://www.polymer-project.org/" target="_blank">Java EE</a></p>
 </footer>

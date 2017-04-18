@@ -1,9 +1,10 @@
+package controller;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,27 +14,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import session.QuestionsFacade;
 import session.UsersFacade;
 
 /**
  *
  * @author mera_naam_dwaipayan
  */
-@WebServlet("/ControllerServlet")
-public class ControllerServlet extends HttpServlet {
-    
-    @EJB
-    private QuestionsFacade questionsFacade; 
+@WebServlet("/LoginServlet")
+public class LoginServlet extends HttpServlet {
     @EJB
     private UsersFacade usersFacade;
-    @Override
-    public void init() throws ServletException {
 
-        // store category list in serv1let context
-        getServletContext().setAttribute("questions", questionsFacade.findAll());
-        //getServletContext().setAttribute("users", questionsFacade.findByName());
-    }
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -51,10 +42,10 @@ public class ControllerServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ControllerServlet</title>");            
+            out.println("<title>Servlet LoginServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ControllerServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet LoginServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -72,43 +63,7 @@ public class ControllerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String userPath = request.getServletPath();
-
-        // if category page is requested
-        if (userPath.equals("/home")) {
-            // TODO: Implement category request
-            userPath = "/home";
-
-        // if cart page is requested
-        }
-        else if (userPath.equals("/question")) {
-            // TODO: Implement cart page request
-
-            userPath = "/question";
-
-        // if checkout page is requested
-        }
-       
-        else if (userPath.equals("/profile")) {
-            // TODO: Implement checkout page request
-            userPath = "/profile";
-        // if user switches language
-        }
-        else if (userPath.equals("/login")) {
-            // TODO: Implement checkout page request
-            userPath = "/login";
-        // if user switches language
-        }
-        
-        // use RequestDispatcher to forward request internally
-        String url = "/WEB-INF/view" + userPath + ".jsp";
-
-        try {
-            request.getRequestDispatcher(url).forward(request, response);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        
+        processRequest(request, response);
     }
 
     /**
@@ -122,17 +77,18 @@ public class ControllerServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+        //processRequest(request, response);
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        usersFacade.setParameters(username, password);
-        response.sendRedirect("");
-          
-       }
-       
-        
+        if(usersFacade.getParameters(username, password)==1){
+            response.sendRedirect("/home");
+            }
+        else{
+            response.sendError(500);
+            }        
+        }
+         
     
-
 
     /**
      * Returns a short description of the servlet.

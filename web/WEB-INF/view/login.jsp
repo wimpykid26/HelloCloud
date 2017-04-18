@@ -10,12 +10,12 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="css/login.css">
-        <title>Signup</title>
+        <title>Login</title>
     </head>
     <hgroup>
-        <h1>Signup</h1>
+        <h1>Login</h1>
     </hgroup>
-    <form method="post" action="${pageContext.request.contextPath}/ControllerServlet">
+    <form method="post" action="${pageContext.request.contextPath}/LoginServlet">
         <div class="group">
             <input type="text" name="username"><span class="highlight"></span><span class="bar"></span>
             <label>Name</label>
@@ -23,10 +23,6 @@
         <div class="group">
             <input type="text" name="password"><span class="highlight"></span><span class="bar"></span>
             <label>Password</label>
-        </div>
-        <div class="group">
-            <input type="text"><span class="highlight"></span><span class="bar"></span>
-            <label>Re-enter Password</label>
         </div>
         <input type="submit" name="submit" value="submit">
         </input>

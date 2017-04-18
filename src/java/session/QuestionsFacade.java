@@ -6,6 +6,7 @@
 package session;
 
 import entity.Questions;
+import entity.Users;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -27,6 +28,13 @@ public class QuestionsFacade extends AbstractFacade<Questions> {
 
     public QuestionsFacade() {
         super(Questions.class);
+    }
+    public void setParameters(String username, String content, String category){
+        Questions question = new Questions();
+        question.setUsername(username);
+        question.setContent(content);
+        question.setType(category);
+        em.persist(question);
     }
     
 }

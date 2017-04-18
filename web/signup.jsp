@@ -15,7 +15,7 @@
     <hgroup>
         <h1>Signup</h1>
     </hgroup>
-    <form method="post" action="${pageContext.request.contextPath}/ControllerServlet">
+    <form method="POST" action="${pageContext.request.contextPath}/ControllerServlet">
         <div class="group">
             <input type="text" name="username"><span class="highlight"></span><span class="bar"></span>
             <label>Name</label>
@@ -28,7 +28,8 @@
             <input type="text"><span class="highlight"></span><span class="bar"></span>
             <label>Re-enter Password</label>
         </div>
-        <input type="submit" name="submit" value="submit">
-        </input>
+        <button type="submit" class="button buttonBlue">Subscribe
+            <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+        </button>
     </form>
 </html>
